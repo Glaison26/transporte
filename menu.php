@@ -9,39 +9,13 @@
     date_default_timezone_set('America/Sao_Paulo');
     $agora = date('d/m/Y H:i');
     $c_data = date('Y-m-d');
-    //
-    $_SESSION['voltadiretriz'] = 'N';
-    $_SESSION['consulta_solicitacao'] = "";
-    $_SESSION['consulta_ordem'] = "";
-    // verifico numero de solicitações em aberto
-    $c_sql = "select COUNT(*) AS aberta_solicitacao FROM solicitacao WHERE STATUS = 'A'";
-    $result = $conection->query($c_sql);
-    $registro = $result->fetch_assoc();
-    $c_solicitacao_aberta = $registro['aberta_solicitacao'];
-    $c_ordens_sla = 0;
-    //verifoco numero de preventivas a serem geradas
-    $c_sql = "select COUNT(*) AS preventivas FROM preventivas WHERE data_prox_realizacao<='$c_data'";
-    $result = $conection->query($c_sql);
-    $registro = $result->fetch_assoc();
-    $c_preventivas = $registro['preventivas'];
-    // verifco Ordens de serviço com o SLA em atraso
-    $c_sql = "select COUNT(*) AS sla FROM ordens WHERE data_previsao <= '$c_data' AND ordens.`status`='A'";
-    $result = $conection->query($c_sql);
-    $registro = $result->fetch_assoc();
-    $c_ordens_sla = $registro['sla'];
-    // verifico ordens de serviço que encontran-se em aberto
-    $c_sql = "select COUNT(*) AS abertas FROM ordens WHERE  ordens.`status`='A'";
-    $result = $conection->query($c_sql);
-    $registro = $result->fetch_assoc();
-    $c_ordens_abertas = $registro['abertas'];
-
-
+   
     ?>
  <!DOCTYPE html>
  <html lang="en">
 
  <head>
-     <title>GOP - Gestão Operacional</title>
+     <title>Gestão de Transporte</title>
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="shortcut icon" type="imagex/png" href="./imagens/img_gop.ico">
@@ -73,35 +47,65 @@
  <div class="content">
      <main>
 
-                 <div class="panel default class">
-                     <div class="alert alert-success">
+         <div class="container-fluid">
 
-                         <strong>Login efetuado! - </strong>Bem vindo <?php echo ' ' . $_SESSION['c_usuario'] . ' - ' . $agora . ' '; ?>
-                         <label for="usuario"></label>
+             <body class="sb-nav-fixed">
+
+                 <div style="padding-top :2px;">
+                     <div class="panel">
+                         <div class="panel-heading text-center text-primary">
+                             <br>
+                             <h1><img Align="left" style="width:120px" class="img-responsive">
+                                 <strong>Gestão de Transporte</strong>
+                             </h1>
+
+                         </div>
                      </div>
                  </div>
-                 <br>
-                 <div class="content">
-                     <?php
-                        if ($_SESSION['tipo'] <> 'Solicitante') {
-                            require('cards_menu.php');
-                        }
-                        ?>
+                 <div style="padding-left :15px; padding-right :15px;">
+                     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-blue ftco-navbar-light" id="ftco-navbar">
+                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                             <span class="fa fa-bars">Menu</span>
+                         </button>
+                         <div class="collapse navbar-collapse" id="ftco-nav">
+                             <div class="navbar-header">
+
+                                 <div style="padding-left :10px;">
+                                     <ul class="navbar-nav mr-auto">
+                                         <li class='nav-item'><a href='/gop/configuracoes.php' class='nav-link'><img src='\transporte\imagens\notas.png' alt='25' width='25' height='25'> Lançamentos</a></li>
+                                     </ul>
+                                 </div>
+                             </div>
+                             <div style="padding-left :10px;">
+                                 <ul class="navbar-nav mr-auto">
+                                     <li class='nav-item dropdown'>
+                                         <!-- Opções de cadastro do menu -->
+                                         <a class='nav-link dropdown-toggle' href='#' id='dropdown01' data-toggle='dropdown' aria-haspopup=true' aria-expanded='false'><img src='\transporte\imagens\cadastro.png' alt='25' width='25' height='25'> Cadastros</a>
+                                         <div class='dropdown-menu' aria-labelledby='dropdown01'>
+                                             <a class='dropdown-item' href='/transporte/cadastros/solicitantes/solicitantes_lista.php'><img src='\transporte\imagens\solicitante.png' alt='25' width='25' height='25'> Solicitantes</a>
+                                             <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\condutor.png' alt='25' width='25' height='25'> Motoristas</a>
+                                             <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\carro.png' alt='25' width='25' height='25'> Veículos</a>
+                                             <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\pacientes.png' alt='25' width='25' height='25'> Pacientes</a>
+                                             <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\equipe.png' alt='25' width='25' height='25'> Usuários</a>
+                                         </div>
+                                     </li>
+                                 </ul>
+                             </div>
+                         </div>
+                     </nav>
                  </div>
-
+             </body>
+             <!--   rodapé do menu   -->
+             <div style="padding-bottom:15px;">
+                 <footer>
+                     <div style="padding-left :10px;">
+                         <p>
+                         <h4>Prefeitura Municipal de Sabará - Todos os direitos reservados</h4>
+                         </p>
+                     </div>
+                 </footer>
+             </div>
          </div>
-         </body>
-
-         <div style="padding-bottom:15px;">
-             <footer>
-                 <div style="padding-left :10px;">
-                     <p>
-                     <h4>GOP - Gestão Operacional - Todos os direitos reservados</h4>
-                     </p>
-                 </div>
-             </footer>
-         </div>
-
      </main>
  </div>
 
@@ -121,7 +125,7 @@
 
      /* Style the links inside the navigation bar */
      .topnav a {
-         float: left;
+         float: right;
          color: #f2f2f2;
          text-align: center;
          padding: 14px 16px;
