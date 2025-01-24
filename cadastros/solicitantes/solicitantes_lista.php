@@ -64,6 +64,15 @@ include('../../conexao.php');
     });
 </script>
 
+<script language="Javascript">
+        function confirmacao(id) {
+            var resposta = confirm("Deseja remover esse registro?");
+            if (resposta == true) {
+                window.location.href = "/transporte/cadastros/solicitantes/solicitantes_excluir.php?id=" + id;
+            }
+        }
+    </script>
+
 
 
 <body>
@@ -78,7 +87,7 @@ include('../../conexao.php');
 
 
         <a class="btn btn-success btn-sm" href="/transporte/cadastros/solicitantes/solicitantes_novo.php"><span class="glyphicon glyphicon-plus"></span> Incluir</a>
-        <a class="btn btn-secondary btn-sm" href="/gop/menu.php"><span class="glyphicon glyphicon-off"></span> Voltar</a>
+        <a class="btn btn-secondary btn-sm" href="/transporte/menu.php"><span class="glyphicon glyphicon-off"></span> Voltar</a>
 
         <hr>
         <table class="table table display table-bordered tabsolicitantes">
@@ -115,7 +124,7 @@ include('../../conexao.php');
             <td>$c_linha[telefone]</td>
             <td>$c_linha[telefone2]</td>
             <td>
-            <a class='btn btn-secondary btn-sm' href='/gop/cadastros/setores/setores_editar.php?id=$c_linha[id]'><span class='glyphicon glyphicon-pencil'></span> Editar</a>
+            <a class='btn btn-secondary btn-sm' href='/transporte/cadastros/solicitantes/solicitantes_editar.php?id=$c_linha[id]'><span class='glyphicon glyphicon-pencil'></span> Editar</a>
             <a class='btn btn-danger btn-sm' href='javascript:func()'onclick='confirmacao($c_linha[id])'><span class='glyphicon glyphicon-trash'></span> Excluir</a>
             </td>
 

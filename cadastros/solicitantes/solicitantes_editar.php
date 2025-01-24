@@ -1,25 +1,47 @@
-<?php
-// controle de acesso ao formulário
+<?php // controle de acesso ao formulário
 session_start();
 if (!isset($_SESSION['newsession'])) {
     die('Acesso não autorizado!!!');
 }
 
-include("../../conexao.php");
-include("../../links2.php");
-include_once "../../lib_gop.php";
+include("..\..\conexao.php");
+include("..\..\links2.php");
 
-$c_nome = '';
-$c_fone1 = '';
-$c_fone2 = '';
-$c_setor = '';
+include_once "..\..\lib_gop.php";
+
+// rotina de post dos dados do formuário
+
 
 // variaveis para mensagens de erro e suscessso da gravação
 $msg_gravou = "";
 $msg_erro = "";
+$c_id = $_GET["id"];
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {  // metodo get para carregar dados no formulário
 
+    if (!isset($_GET["id"])) {
+        header('location: /transporte/cadastros/solicitantes/solicitantes_lista.php');
+        exit;
+    }
+
+   
+    // leitura do cliente através de sql usando id passada
+    $c_sql = "select * from solicitantes where id=$c_id";
+    $result = $conection->query($c_sql);
+    $registro = $result->fetch_assoc();
+
+    if (!$registro) {
+        header('location: /transporte/cadastros/solicitantes/solicitantes_lista.php');
+        exit;
+    }
+
+    $c_nome = $registro['nome'];
+    $c_setor = $registro['setor'];
+    $c_fone1 = $registro['telefone'];
+    $c_fone2 = $registro['telefone2'];
+} else {
+    // metodo post para atualizar dados
+  
     $c_nome = $_POST['nome'];
     $c_setor = $_POST['setor'];
     $c_fone1 = $_POST['fone1'];
@@ -27,20 +49,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     do {
 
-        // faço a inclusão da tabela com sql
-        $c_sql = "Insert into solicitantes (nome,telefone,telefone2,setor) Value ('$c_nome', '$c_fone1', '$c_fone2', '$c_setor')";
+        // grava dados no banco
+
+        $c_sql = "Update solicitantes" .
+            " SET nome= '$c_nome', telefone='$c_fone1' ,  telefone2='$c_fone2', setor='$c_setor'" .
+            " where id=$c_id";
+        echo $c_sql;
         $result = $conection->query($c_sql);
+
         // verifico se a query foi correto
         if (!$result) {
             die("Erro ao Executar Sql!!" . $conection->connect_error);
         }
 
-        $msg_gravou = "Dados Gravados com Sucesso!!";
-
         header('location: /transporte/cadastros/solicitantes/solicitantes_lista.php');
     } while (false);
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -48,8 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <head>
     <meta charset="UTF-8">
-
-
     <script>
         const handlePhone = (event) => {
             let input = event.target
@@ -68,13 +90,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
+
     <div class="container  -my5">
         <div style="padding-top:5px;">
             <div class="panel panel-primary class">
 
                 <div class="panel-heading text-center">
                     <h4>Controle de Transporte da Secretaria Municipal de Saúde</h4>
-                    <h5>Entrada de Novo solicitante<h5>
+                    <h5>Edição de solicitante<h5>
                 </div>
             </div>
         </div>
@@ -105,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Nome (*)</label>
                 <div class="col-sm-6">
-                    <input type="text" maxlength="200" class="form-control" name="nome" value="<?php echo $c_nome; ?>" required>
+                    <input type="text" maxlength="200" class="form-control" name="nome"  value="<?php echo $c_nome; ?>" required>
                 </div>
             </div>
 
