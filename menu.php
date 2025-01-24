@@ -9,7 +9,7 @@
     date_default_timezone_set('America/Sao_Paulo');
     $agora = date('d/m/Y H:i');
     $c_data = date('Y-m-d');
-   
+
     ?>
  <!DOCTYPE html>
  <html lang="en">
@@ -56,44 +56,43 @@
                          <div class="panel-heading text-center text-primary">
                              <br>
                              <h1><img Align="left" style="width:120px" class="img-responsive">
-                                 <strong>Gestão de Transporte</strong>
+                                 <strong>Controle de Transporte da Secretaria Municipal de Saúde</strong>
                              </h1>
-
                          </div>
                      </div>
                  </div>
-                 <div style="padding-left :15px; padding-right :15px;">
-                     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-blue ftco-navbar-light" id="ftco-navbar">
-                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                             <span class="fa fa-bars">Menu</span>
-                         </button>
-                         <div class="collapse navbar-collapse" id="ftco-nav">
-                             <div class="navbar-header">
 
-                                 <div style="padding-left :10px;">
-                                     <ul class="navbar-nav mr-auto">
-                                         <li class='nav-item'><a href='/gop/configuracoes.php' class='nav-link'><img src='\transporte\imagens\notas.png' alt='25' width='25' height='25'> Lançamentos</a></li>
-                                     </ul>
-                                 </div>
-                             </div>
+                 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-blue ftco-navbar-light" id="ftco-navbar">
+                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                         <span class="fa fa-bars">Menu</span>
+                     </button>
+                     <div class="collapse navbar-collapse" id="ftco-nav">
+                         <div class="navbar-header">
+
                              <div style="padding-left :10px;">
                                  <ul class="navbar-nav mr-auto">
-                                     <li class='nav-item dropdown'>
-                                         <!-- Opções de cadastro do menu -->
-                                         <a class='nav-link dropdown-toggle' href='#' id='dropdown01' data-toggle='dropdown' aria-haspopup=true' aria-expanded='false'><img src='\transporte\imagens\cadastro.png' alt='25' width='25' height='25'> Cadastros</a>
-                                         <div class='dropdown-menu' aria-labelledby='dropdown01'>
-                                             <a class='dropdown-item' href='/transporte/cadastros/solicitantes/solicitantes_lista.php'><img src='\transporte\imagens\solicitante.png' alt='25' width='25' height='25'> Solicitantes</a>
-                                             <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\condutor.png' alt='25' width='25' height='25'> Motoristas</a>
-                                             <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\carro.png' alt='25' width='25' height='25'> Veículos</a>
-                                             <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\pacientes.png' alt='25' width='25' height='25'> Pacientes</a>
-                                             <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\equipe.png' alt='25' width='25' height='25'> Usuários</a>
-                                         </div>
-                                     </li>
+                                     <li class='nav-item'><a href='/gop/configuracoes.php' class='nav-link'><img src='\transporte\imagens\notas.png' alt='25' width='25' height='25'> Lançamentos</a></li>
                                  </ul>
                              </div>
                          </div>
-                     </nav>
-                 </div>
+                         <div style="padding-left :10px;">
+                             <ul class="navbar-nav mr-auto">
+                                 <li class='nav-item dropdown'>
+                                     <!-- Opções de cadastro do menu -->
+                                     <a class='nav-link dropdown-toggle' href='#' id='dropdown01' data-toggle='dropdown' aria-haspopup=true' aria-expanded='false'><img src='\transporte\imagens\cadastro.png' alt='25' width='25' height='25'> Cadastros</a>
+                                     <div class='dropdown-menu' aria-labelledby='dropdown01'>
+                                         <a class='dropdown-item' href='/transporte/cadastros/solicitantes/solicitantes_lista.php'><img src='\transporte\imagens\solicitante.png' alt='25' width='25' height='25'> Solicitantes</a>
+                                         <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\condutor.png' alt='25' width='25' height='25'> Motoristas</a>
+                                         <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\carro.png' alt='25' width='25' height='25'> Veículos</a>
+                                         <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\pacientes.png' alt='25' width='25' height='25'> Pacientes</a>
+                                         <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\equipe.png' alt='25' width='25' height='25'> Usuários</a>
+                                     </div>
+                                 </li>
+                             </ul>
+                         </div>
+                     </div>
+                 </nav>
+
              </body>
              <!--   rodapé do menu   -->
              <div style="padding-bottom:15px;">

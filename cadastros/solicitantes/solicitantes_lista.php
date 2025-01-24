@@ -29,7 +29,7 @@ include('../../conexao.php');
                 'aTargets': [4]
             }, {
                 'aTargets': [0],
-                "visible": true
+                "visible": false
             }],
             "oLanguage": {
                 "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -71,43 +71,43 @@ include('../../conexao.php');
     <div class="container-fluid">
         <div class="panel panel-primary class">
             <div class="panel-heading text-center">
-                <h4>Gestão de Transportes</h4>
+                <h4>Controle de Transporte da Secretaria Municipal de Saúde</h4>
                 <h5>Cadastro de solicitantes<h5>
             </div>
         </div>
-        <div class="container-fluid">
 
-            <a class="btn btn-success btn-sm" href="/gop/cadastros/setores/setores_novo.php"><span class="glyphicon glyphicon-plus"></span> Incluir</a>
-            <a class="btn btn-secondary btn-sm" href="/gop/menu.php"><span class="glyphicon glyphicon-off"></span> Voltar</a>
 
-            <hr>
-            <table class="table table display table-bordered tabsolicitantes">
-                <thead class="thead">
-                    <tr>
-                        <th scope="col">Código</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Setor</th>
-                        <th scope="col">Fone I</th>
-                        <th scope="col">Fone II</th>
-                        <th scope="col">Opções</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
+        <a class="btn btn-success btn-sm" href="/transporte/cadastros/solicitantes/solicitantes_novo.php"><span class="glyphicon glyphicon-plus"></span> Incluir</a>
+        <a class="btn btn-secondary btn-sm" href="/gop/menu.php"><span class="glyphicon glyphicon-off"></span> Voltar</a>
 
-                    // faço a Leitura da tabela com sql
-                    $c_sql = "SELECT solicitantes.id, solicitantes.nome, solicitantes.telefone, solicitantes.telefone2, solicitantes.setor
+        <hr>
+        <table class="table table display table-bordered tabsolicitantes">
+            <thead class="thead">
+                <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Setor</th>
+                    <th scope="col">Fone I</th>
+                    <th scope="col">Fone II</th>
+                    <th scope="col">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+
+                // faço a Leitura da tabela com sql
+                $c_sql = "SELECT solicitantes.id, solicitantes.nome, solicitantes.telefone, solicitantes.telefone2, solicitantes.setor
                             FROM solicitantes ORDER BY solicitantes.nome";
-                    $result = $conection->query($c_sql);
-                    // verifico se a query foi correto
-                    if (!$result) {
-                        die("Erro ao Executar Sql!!" . $conection->connect_error);
-                    }
+                $result = $conection->query($c_sql);
+                // verifico se a query foi correto
+                if (!$result) {
+                    die("Erro ao Executar Sql!!" . $conection->connect_error);
+                }
 
-                    // insiro os registro do banco de dados na tabela 
-                    while ($c_linha = $result->fetch_assoc()) {
+                // insiro os registro do banco de dados na tabela 
+                while ($c_linha = $result->fetch_assoc()) {
 
-                        echo "
+                    echo "
             <tr class='info'>
             <td>$c_linha[id]</td>
             <td>$c_linha[nome]</td>
@@ -121,15 +121,13 @@ include('../../conexao.php');
 
             </tr>
             ";
-                    }
-                    ?>
-
-
-                </tbody>
-            </table>
-        </div>
-
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
+
+
 
 </body>
 
