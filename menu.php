@@ -11,6 +11,8 @@
     $c_data = date('Y-m-d');
 
     ?>
+
+
  <!DOCTYPE html>
  <html lang="en">
 
@@ -79,15 +81,36 @@
                              <ul class="navbar-nav mr-auto">
                                  <li class='nav-item dropdown'>
                                      <!-- Opções de cadastro do menu -->
-                                     <a class='nav-link dropdown-toggle' href='#' id='dropdown01' data-toggle='dropdown' aria-haspopup=true' aria-expanded='false'><img src='\transporte\imagens\cadastro.png' alt='25' width='25' height='25'> Cadastros</a>
+                                     <a class='nav-link dropdown-toggle' href='#' id='dropdown01' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><img src='\transporte\imagens\cadastro.png' alt='25' width='25' height='25'> Cadastros</a>
                                      <div class='dropdown-menu' aria-labelledby='dropdown01'>
                                          <a class='dropdown-item' href='/transporte/cadastros/solicitantes/solicitantes_lista.php'><img src='\transporte\imagens\solicitante.png' alt='25' width='25' height='25'> Solicitantes de Transporte</a>
-                                         <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\condutor.png' alt='25' width='25' height='25'> Motoristas da Prefeitura</a>
+                                         <a class='dropdown-item' href='/transporte/cadastros/motoristas/motoristas_lista.php'><img src='\transporte\imagens\condutor.png' alt='25' width='25' height='25'> Motoristas da Prefeitura</a>
                                          <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\carro.png' alt='25' width='25' height='25'> Veículos Disponíveis</a>
                                          <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\pacientes.png' alt='25' width='25' height='25'> Pacientes Atendidos</a>
-                                         <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\equipe.png' alt='25' width='25' height='25'> Usuários do Sietema</a>
+                                         <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\equipe.png' alt='25' width='25' height='25'> Usuários do Sistema</a>
                                      </div>
                                  </li>
+                             </ul>
+                         </div>
+                         <div style="padding-left :10px;">
+                             <ul class="navbar-nav mr-auto">
+                                 <li class='nav-item dropdown'>
+                                     <!-- Opções de cadastro do menu -->
+                                     <a class='nav-link dropdown-toggle' href='#' id='dropdown01' data-toggle='dropdown' aria-haspopup=true' aria-expanded='false'><img src='\transporte\imagens\resultado.png' alt='25' width='25' height='25'> Resultados</a>
+                                     <div class='dropdown-menu' aria-labelledby='dropdown01'>
+                                         <a class='dropdown-item' href='/transporte/cadastros/solicitantes/solicitantes_lista.php'> Resultados Gerais</a>
+                                         <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'>por Solicitante</a>
+                                         <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'>por Motorista</a>
+                                         <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'>por Veículos</a>
+                                         <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'>por Pacientes</a>
+
+                                     </div>
+                                 </li>
+                             </ul>
+                         </div>
+                         <div style="padding-left :10px;">
+                             <ul class="navbar-nav mr-auto">
+                                 <li class='nav-item'><a href='/transporte/trocasenha.php' class='nav-link'><img src='\transporte\imagens\trocasenha.png' alt='25' width='25' height='25'> Alterar Senha</a></li>
                              </ul>
                          </div>
                      </div>
@@ -97,7 +120,7 @@
              <!--   rodapé do menu   -->
              <div style="padding-bottom:15px;">
                  <footer>
-                     <div style="padding-left :10px;">
+                     <div style="padding-left :10px; padding-bottom:15px;">
                          <p>
                          <h4>Prefeitura Municipal de Sabará - Todos os direitos reservados</h4>
                          </p>

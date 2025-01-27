@@ -20,7 +20,7 @@ include('../../conexao.php');
 <!-- script da tabela de recursos -->
 <script>
     $(document).ready(function() {
-        $('.tabsolicitantes').DataTable({
+        $('.tabmotoristas').DataTable({
             // 
             "iDisplayLength": -1,
             "order": [1, 'asc'],
@@ -68,7 +68,7 @@ include('../../conexao.php');
     function confirmacao(id) {
         var resposta = confirm("Deseja remover esse registro?");
         if (resposta == true) {
-            window.location.href = "/transporte/cadastros/solicitantes/solicitantes_excluir.php?id=" + id;
+            window.location.href = "/transporte/cadastros/motoristas/motoristas_excluir.php?id=" + id;
         }
     }
 </script>
@@ -81,23 +81,23 @@ include('../../conexao.php');
         <div class="panel panel-primary class">
             <div class="panel-heading text-center">
                 <h4>Controle de Transporte da Secretaria Municipal de Saúde</h4>
-                <h5>Cadastro de solicitantes<h5>
+                <h5>Cadastro de Motoristas<h5>
             </div>
         </div>
 
 
-        <a class="btn btn-success btn-sm" href="/transporte/cadastros/solicitantes/solicitantes_novo.php"><span class="glyphicon glyphicon-plus"></span> Incluir</a>
+        <a class="btn btn-success btn-sm" href="/transporte/cadastros/motoristas/motoristas_novo.php"><span class="glyphicon glyphicon-plus"></span> Incluir</a>
         <a class="btn btn-secondary btn-sm" href="/transporte/menu.php"><span class="glyphicon glyphicon-off"></span> Voltar</a>
 
         <hr>
-        <table class="table table display table-bordered tabsolicitantes">
+        <table class="table table display table-bordered tabmotoristas">
             <thead class="thead">
                 <tr>
                     <th scope="col">Código</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Setor</th>
                     <th scope="col">Fone I</th>
                     <th scope="col">Fone II</th>
+                    <th scope="col">e-mail</th>
                     <th scope="col">Opções</th>
                 </tr>
             </thead>
@@ -105,8 +105,8 @@ include('../../conexao.php');
                 <?php
 
                 // faço a Leitura da tabela com sql
-                $c_sql = "SELECT solicitantes.id, solicitantes.nome, solicitantes.telefone, solicitantes.telefone2, solicitantes.setor
-                            FROM solicitantes ORDER BY solicitantes.nome";
+                $c_sql = "SELECT motoristas.id, motoristas.nome, motoristas.fone1,motoristas.fone2, motoristas.email
+                        FROM motoristas ORDER BY motoristas.nome";
                 $result = $conection->query($c_sql);
                 // verifico se a query foi correto
                 if (!$result) {
@@ -120,11 +120,11 @@ include('../../conexao.php');
             <tr class='info'>
             <td>$c_linha[id]</td>
             <td>$c_linha[nome]</td>
-            <td>$c_linha[setor]</td>
-            <td>$c_linha[telefone]</td>
-            <td>$c_linha[telefone2]</td>
+            <td>$c_linha[fone1]</td>
+            <td>$c_linha[fone2]</td>
+            <td>$c_linha[email]</td>
             <td>
-            <a class='btn btn-secondary btn-sm' href='/transporte/cadastros/solicitantes/solicitantes_editar.php?id=$c_linha[id]'><span class='glyphicon glyphicon-pencil'></span> Editar</a>
+            <a class='btn btn-secondary btn-sm' href='/transporte/cadastros/motoristas/motoristas_editar.php?id=$c_linha[id]'><span class='glyphicon glyphicon-pencil'></span> Editar</a>
             <a class='btn btn-danger btn-sm' href='javascript:func()'onclick='confirmacao($c_linha[id])'><span class='glyphicon glyphicon-trash'></span> Excluir</a>
             </td>
 
