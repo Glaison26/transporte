@@ -142,7 +142,7 @@ include('../../conexao.php');
             e.preventDefault();
             var c_id = $('#up_idField').val();
             var c_descricao = $('#up_descricaoField').val();
-            var c_placa = $('up_placaField').val();
+            var c_placa = $('#up_placaField').val();
 
             if (c_descricao != '') {
 
@@ -285,7 +285,7 @@ include('../../conexao.php');
                         <h5>Campos com (*) são obrigatórios</h5>
                     </div>
                     <form id="frmup" method="POST" action="">
-                        <input type="hidden" id="up_idField" name="up_idField">
+                        <input type="hidden" id="up_idField" name="up_idField" id="up_idField">
                         <div class="mb-3 row">
                             <label for="up_descricaoField" class="col-md-3 form-label">Descrição (*)</label>
                             <div class="col-md-9">

@@ -56,14 +56,16 @@
                  <div style="padding-top :2px;">
                      <div class="panel">
                          <div class="panel-heading text-center text-primary">
-                             <br>
-                             <h1><img Align="left" style="width:120px" class="img-responsive">
+                             <br><br>
+                            
+                             <h1><img Align="left" style="width:180px" class="img-responsive" src="\transporte\imagens\sabara.jpeg">
+                            
                                  <strong>Controle de Transporte da Secretaria Municipal de Saúde</strong>
                              </h1>
                          </div>
                      </div>
                  </div>
-
+                <br><br>
                  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-blue ftco-navbar-light" id="ftco-navbar">
                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                          <span class="fa fa-bars">Menu</span>
@@ -83,11 +85,11 @@
                                      <!-- Opções de cadastro do menu -->
                                      <a class='nav-link dropdown-toggle' href='#' id='dropdown01' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><img src='\transporte\imagens\cadastro.png' alt='25' width='25' height='25'> Cadastros</a>
                                      <div class='dropdown-menu' aria-labelledby='dropdown01'>
-                                         <a class='dropdown-item' href='/transporte/cadastros/solicitantes/solicitantes_lista.php'><img src='\transporte\imagens\solicitante.png' alt='25' width='25' height='25'> Solicitantes de Transporte</a>
-                                         <a class='dropdown-item' href='/transporte/cadastros/motoristas/motoristas_lista.php'><img src='\transporte\imagens\condutor.png' alt='25' width='25' height='25'> Motoristas da Prefeitura</a>
-                                         <a class='dropdown-item' href='/transporte/cadastros/veiculos/veiculos_lista.php'><img src='\transporte\imagens\carro.png' alt='25' width='25' height='25'> Veículos Disponíveis</a>
-                                         <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\pacientes.png' alt='25' width='25' height='25'> Pacientes Atendidos</a>
-                                         <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\equipe.png' alt='25' width='25' height='25'> Usuários do Sistema</a>
+                                         <a class='dropdown-item' href='/transporte/cadastros/solicitantes/solicitantes_lista.php'><img src='\transporte\imagens\solicitante.png' alt='25' width='25' height='25'> Solicitantes de Transporte...</a>
+                                         <a class='dropdown-item' href='/transporte/cadastros/motoristas/motoristas_lista.php'><img src='\transporte\imagens\condutor.png' alt='25' width='25' height='25'> Motoristas da Prefeitura...</a>
+                                         <a class='dropdown-item' href='/transporte/cadastros/veiculos/veiculos_lista.php'><img src='\transporte\imagens\carro.png' alt='25' width='25' height='25'> Veículos Disponíveis...</a>
+                                         <a class='dropdown-item' href='/transporte/cadastros/pacientes/pacientes_lista.php'><img src='\transporte\imagens\pacientes.png' alt='25' width='25' height='25'> Pacientes Atendidos...</a>
+                                         <a class='dropdown-item' href='/transporte/cadastros/usuarios/usuarios_lista.php'><img src='\transporte\imagens\equipe.png' alt='25' width='25' height='25'> Usuários do Sistema...</a>
                                      </div>
                                  </li>
                              </ul>
@@ -115,6 +117,14 @@
                          </div>
                      </div>
                  </nav>
+                 <div class="panel default class">
+                     <div class="alert alert-success">
+                        <h5>
+                         <strong>Login efetuado! - </strong>Bem vindo <?php echo ' ' . $_SESSION['c_usuario'] . ' - ' . $agora . ' '; ?>
+                         <label for="usuario"></label>
+                        </h5>
+                     </div>
+                 </div>
 
              </body>
              <!--   rodapé do menu   -->

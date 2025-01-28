@@ -11,7 +11,7 @@
     <div class="container-fluid">
         <div class="panel panel-primary class">
             <div class="panel-heading text-center">
-                <h4>GOP - Gestão Operacional</h4>
+                <h4>Ssistema de Controle de transportes</h4>
                 <h5>Erro de Exclusão de Registro<h5>
             </div>
         </div>
