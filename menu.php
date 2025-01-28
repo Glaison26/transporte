@@ -85,7 +85,7 @@
                                      <div class='dropdown-menu' aria-labelledby='dropdown01'>
                                          <a class='dropdown-item' href='/transporte/cadastros/solicitantes/solicitantes_lista.php'><img src='\transporte\imagens\solicitante.png' alt='25' width='25' height='25'> Solicitantes de Transporte</a>
                                          <a class='dropdown-item' href='/transporte/cadastros/motoristas/motoristas_lista.php'><img src='\transporte\imagens\condutor.png' alt='25' width='25' height='25'> Motoristas da Prefeitura</a>
-                                         <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\carro.png' alt='25' width='25' height='25'> Veículos Disponíveis</a>
+                                         <a class='dropdown-item' href='/transporte/cadastros/veiculos/veiculos_lista.php'><img src='\transporte\imagens\carro.png' alt='25' width='25' height='25'> Veículos Disponíveis</a>
                                          <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\pacientes.png' alt='25' width='25' height='25'> Pacientes Atendidos</a>
                                          <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'><img src='\transporte\imagens\equipe.png' alt='25' width='25' height='25'> Usuários do Sistema</a>
                                      </div>
