@@ -57,9 +57,7 @@
                      <div class="panel">
                          <div class="panel-heading text-center text-primary">
                              <br><br>
-                            
                              <h1><img Align="left" style="width:180px" class="img-responsive" src="\transporte\imagens\sabara.jpeg">
-                            
                                  <strong>Controle de Transporte da Secretaria Municipal de Saúde</strong>
                              </h1>
                          </div>
@@ -75,7 +73,7 @@
 
                              <div style="padding-left :10px;">
                                  <ul class="navbar-nav mr-auto">
-                                     <li class='nav-item'><a href='/gop/configuracoes.php' class='nav-link'><img src='\transporte\imagens\notas.png' alt='25' width='25' height='25'> Lançamentos</a></li>
+                                     <li class='nav-item'><a href='/transporte/lancamentos/lancamentos.php' class='nav-link'><img src='\transporte\imagens\notas.png' alt='25' width='25' height='25'> Solicitações</a></li>
                                  </ul>
                              </div>
                          </div>
