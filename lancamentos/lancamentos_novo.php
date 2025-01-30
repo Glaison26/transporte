@@ -16,14 +16,40 @@ $msg_erro = "";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $c_tipo = $_POST['tipo'];
-    $c_setor = $_POST['setor'];
-    $c_fone1 = $_POST['fone1'];
-    $c_fone2 = $_POST['fone2'];
+    $c_motorista = $_POST['motorista'];
+    // localizo id do motorias via sql
+    $c_sql = "select id from motoristas where nome='$c_motorista'";
+    $result = $conection->query($c_sql);
+    $registro = $result->fetch_assoc();
+    $i_motorista = $registro['id'];
+    $c_solicitante = $_POST['solicitante'];
+    // localizo id do solicitante via sql
+    $c_sql = "select id from solicitantes where nome='$c_solicitante'";
+    $result = $conection->query($c_sql);
+    $registro = $result->fetch_assoc();
+    $i_solicitante = $registro['id'];
+    $c_paciente = $_POST['paciente'];
+    // localizo id do paciente via sql
+    $c_sql = "select id from paciente where nome='$c_paciente'";
+    $result = $conection->query($c_sql);
+    $registro = $result->fetch_assoc();
+    $i_paciente = $registro['id'];
+    $c_destino = $_POST['destino'];
+    $c_justificativa = $_POST['justificativa'];
+    $c_veiculo = $_POST['veiculo'];
+    // localizo id do paciente via sql
+    $c_sql = "select id from veiculo where descricao='$c_veiculo'";
+    $result = $conection->query($c_sql);
+    $registro = $result->fetch_assoc();
+    $i_veiculo = $registro['id'];
+    $c_data = $_POST['data'];
+    $c_hora = $_POST['hora'];
 
     do {
 
         // faço a inclusão da tabela com sql
-        $c_sql = "Insert into solicitantes (nome,telefone,telefone2,setor) Value ('$c_nome', '$c_fone1', '$c_fone2', '$c_setor')";
+        $c_sql = "Insert into lancamentos (tipo, id_motorista, id_solicitante, id_paciente, id_veiculo, data, hora, justificativa, destino) 
+        Value ('$c_tipo', '$i_motorista', '$i_solicitante', '$i_paciente', '$i_veiculo', '$c_data', '$c_hora', '$c_justificativa', '$c_destino')";
         $result = $conection->query($c_sql);
         // verifico se a query foi correto
         if (!$result) {
@@ -32,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $msg_gravou = "Dados Gravados com Sucesso!!";
 
-        header('location: /transporte/cadastros/solicitantes/solicitantes_lista.php');
+        header('location: /transporte/lancamentos/lancamentos.php');
     } while (false);
 }
 ?>
@@ -82,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <option>Administrativo</option>
                         <option>Unidade de Saúde</option>
                         <option>Oncologia</option>
-                        <option>visita domiciliar</option>
+                        <option>Visita domiciliar</option>
                     </select>
                 </div>
             </div>
@@ -178,12 +204,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <br>
             <div class="row mb-3">
-               
-                    <label class="col-sm-2 col-form-label">Justificativa</label>
-                    <div class="col-sm-8">
-                    <textarea class="form-control" id="solicitacao" name="solicitacao" rows="6"></textarea>
-                    </div>
-              
+
+                <label class="col-sm-2 col-form-label">Justificativa</label>
+                <div class="col-sm-8">
+                    <textarea class="form-control" id="justificativa" name="justificativa" rows="6"></textarea>
+                </div>
+
             </div>
 
             <hr>

@@ -7,21 +7,35 @@ if (!isset($_SESSION['newsession'])) {
 //echo $c_sql_recurso;
 include('../links2.php');
 include('../conexao.php');
+// rotina para montagem do sql com as opções selecionadas
+if ((isset($_POST["btnpesquisa"])) && ($_SERVER['REQUEST_METHOD'] == 'POST')) {
+    $_SESSION['sql'] = "SELECT lancamentos.`data`, lancamentos.hora, lancamentos.destino, motoristas.nome AS motorista, solicitantes.nome AS solicitante,
+                        veiculo.descricao AS veiculo, paciente.nome as paciente
+                        FROM lancamentos
+                        JOIN motoristas ON lancamentos.id_motorista = motoristas.id
+                        JOIN veiculo ON lancamentos.id_veiculo = veiculo.id
+                        JOIN solicitantes ON lancamentos.id_solicitante = solicitantes.id
+                        JOIN paciente ON lancamentos.id_paciente = paciente.id
+                        ORDER BY lancamentos.`data` desc";
+}
+header('location: /gop/ordens/ordens_lista.php');
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-<div class="panel panel-primary class">
+    <div class="panel panel-primary class">
         <div class="panel-heading text-center">
-        <h4>Controle de Transporte da Secretaria Municipal de Saúde</h4>
-        <h5>Lançamentos e consulta de Solicitação<h5>
+            <h4>Controle de Transporte da Secretaria Municipal de Saúde</h4>
+            <h5>Lançamentos e consulta de Solicitação<h5>
         </div>
     </div>
     <div class="content">
@@ -50,7 +64,7 @@ include('../conexao.php');
                         <h5>Intervalo da Consulta<h5>
                     </div>
                 </div>
-                
+
                 <div class="row mb-3">
 
                     <label class="col-md-2 form-label">De</label>
@@ -67,6 +81,7 @@ include('../conexao.php');
             </form>
         </div>
     </div>
-   
+
 </body>
+
 </html>
