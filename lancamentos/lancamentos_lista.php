@@ -115,11 +115,12 @@ include('../conexao.php');
 
                 // insiro os registro do banco de dados na tabela 
                 while ($c_linha = $result->fetch_assoc()) {
+                    $c_data = date("d-m-Y", strtotime(str_replace('/', '-', $c_linha['data'])));
 
                     echo "
             <tr class='info'>
             <td>$c_linha[id]</td>
-            <td>$c_linha[data]</td>
+            <td>$c_data</td>
             <td>$c_linha[hora]</td>
             <td>$c_linha[solicitante]</td>
             <td>$c_linha[destino]</td>
@@ -127,7 +128,7 @@ include('../conexao.php');
             <td>$c_linha[veiculo]</td>
             <td>$c_linha[paciente]</td>
             <td>
-            <a class='btn btn-secondary btn-sm' href='/transporte/cadastros/solicitantes/solicitantes_editar.php?id=$c_linha[id]'><span class='glyphicon glyphicon-pencil'></span> Editar</a>
+            <a class='btn btn-secondary btn-sm' href='/transporte/lancamentos/lancamentos_editar.php?id=$c_linha[id]'><span class='glyphicon glyphicon-pencil'></span> Editar</a>
             <a class='btn btn-danger btn-sm' href='javascript:func()'onclick='confirmacao($c_linha[id])'><span class='glyphicon glyphicon-trash'></span> Excluir</a>
             </td>
 

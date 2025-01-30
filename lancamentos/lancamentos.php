@@ -9,6 +9,12 @@ include('../links2.php');
 include('../conexao.php');
 // rotina para montagem do sql com as opções selecionadas
 if (isset($_POST["btnpesquisa"])) {
+    $d_data1 = $_POST['data1'];
+    $d_data1 = date("Y-m-d", strtotime(str_replace('/', '-', $d_data1)));
+    $d_data2 = $_POST['data2'];
+    $d_data2 = date("Y-m-d", strtotime(str_replace('/', '-', $d_data2)));
+    $c_where = "(data>='$d_data1' and data<='$d_data2')";
+    //
     $_SESSION['sql'] = "SELECT lancamentos.id, lancamentos.`data`, lancamentos.hora, lancamentos.destino, motoristas.nome AS motorista, solicitantes.nome AS solicitante,
                         veiculo.descricao AS veiculo, paciente.nome as paciente
                         FROM lancamentos
@@ -16,6 +22,7 @@ if (isset($_POST["btnpesquisa"])) {
                         JOIN veiculo ON lancamentos.id_veiculo = veiculo.id
                         JOIN solicitantes ON lancamentos.id_solicitante = solicitantes.id
                         JOIN paciente ON lancamentos.id_paciente = paciente.id
+                        where $c_where
                         ORDER BY lancamentos.`data` desc";
     header('location: /transporte/lancamentos/lancamentos_lista.php');
 }
@@ -62,7 +69,7 @@ if (isset($_POST["btnpesquisa"])) {
                 </div>
                 <div class="panel panel-light class">
                     <div class="panel-heading text-center">
-                        <h5>Intervalo da Consulta<h5>
+                        <h5>Intervalo da Pesquisa<h5>
                     </div>
                 </div>
 
