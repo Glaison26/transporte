@@ -8,8 +8,8 @@ if (!isset($_SESSION['newsession'])) {
 include('../links2.php');
 include('../conexao.php');
 // rotina para montagem do sql com as opções selecionadas
-if ((isset($_POST["btnpesquisa"])) && ($_SERVER['REQUEST_METHOD'] == 'POST')) {
-    $_SESSION['sql'] = "SELECT lancamentos.`data`, lancamentos.hora, lancamentos.destino, motoristas.nome AS motorista, solicitantes.nome AS solicitante,
+if (isset($_POST["btnpesquisa"])) {
+    $_SESSION['sql'] = "SELECT lancamentos.id, lancamentos.`data`, lancamentos.hora, lancamentos.destino, motoristas.nome AS motorista, solicitantes.nome AS solicitante,
                         veiculo.descricao AS veiculo, paciente.nome as paciente
                         FROM lancamentos
                         JOIN motoristas ON lancamentos.id_motorista = motoristas.id
@@ -17,8 +17,9 @@ if ((isset($_POST["btnpesquisa"])) && ($_SERVER['REQUEST_METHOD'] == 'POST')) {
                         JOIN solicitantes ON lancamentos.id_solicitante = solicitantes.id
                         JOIN paciente ON lancamentos.id_paciente = paciente.id
                         ORDER BY lancamentos.`data` desc";
+    header('location: /transporte/lancamentos/lancamentos_lista.php');
 }
-header('location: /gop/ordens/ordens_lista.php');
+
 ?>
 
 

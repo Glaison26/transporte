@@ -5,8 +5,8 @@ if (!isset($_SESSION['newsession'])) {
 }
 
 //echo $c_sql_recurso;
-include('../../links.php');
-include('../../conexao.php');
+include('../links.php');
+include('../conexao.php');
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ include('../../conexao.php');
             "order": [1, 'asc'],
             "aoColumnDefs": [{
                 'bSortable': false,
-                'aTargets': [4]
+                'aTargets': [7]
             }, {
                 'aTargets': [0],
                 "visible": false
@@ -88,7 +88,7 @@ include('../../conexao.php');
         <a class="btn btn-secondary btn-sm" href="/transporte/lancamentos/lancamentos.php"><span class="glyphicon glyphicon-off"></span> Voltar</a>
 
         <hr>
-        <table class="table table display table-bordered tabsolicitantes">
+        <table class="table table display table-bordered tablancamentos">
             <thead class="thead">
                 <tr>
                     <th scope="col">Código</th>
