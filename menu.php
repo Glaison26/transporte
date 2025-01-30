@@ -110,7 +110,7 @@
                          </div>
                          <div style="padding-left :10px;">
                              <ul class="navbar-nav mr-auto">
-                                 <li class='nav-item'><a href='/transporte/trocasenha.php' class='nav-link'><img src='\transporte\imagens\trocasenha.png' alt='25' width='25' height='25'> Alterar Senha</a></li>
+                                 <li class='nav-item'><a href='/transporte/alterasenha.php' class='nav-link'><img src='\transporte\imagens\trocasenha.png' alt='25' width='25' height='25'> Alterar Senha</a></li>
                              </ul>
                          </div>
                      </div>
