@@ -29,10 +29,18 @@ if ((isset($_POST["btnpesquisa"])) && ($_SERVER['REQUEST_METHOD'] == 'POST')) {
     JOIN veiculo ON lancamentos.id_veiculo=veiculo.id
     where $c_where
     GROUP BY veiculo.id order by total desc";
+    // montagem de sql por solicitantes
+     $c_sql_solicitantes = "SELECT solicitantes.id, solicitantes.nome, COUNT(solicitantes.id) AS total FROM lancamentos
+     JOIN solicitantes ON lancamentos.id_solicitante=solicitantes.id
+     where $c_where
+     GROUP BY solicitantes.id order by total desc";
     // guardo session para proxima pagina de tabelas
     $_SESSION['sql_motoristas'] = $c_sql_motorista;
     $_SESSION['sql_veiculos'] = $c_sql_veiculos;
+    $_SESSION['sql_solicitantes'] = $c_sql_solicitantes;
     //echo $c_sql;
+    
+
     echo "<script> window.open('/transporte/relatorios/bi.php?id=', '_blank');</script>";
 }
 

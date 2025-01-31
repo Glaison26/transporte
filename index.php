@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $_SESSION["id_usuario"] = $registro['id'];
             $_SESSION['c_usuario'] = $c_login;
             $_SESSION['tipo'] = $registro['tipo'];
+            //$_SESSION['']
             header('location: /transporte/menu.php');
         }
     }
