@@ -8,6 +8,7 @@ if (!isset($_SESSION['newsession'])) {
 include('../conexao.php');
 include('../links2.php');
 include_once "../lib_gop.php";
+date_default_timezone_set('America/Sao_Paulo');
 
 // variaveis para mensagens de erro e suscessso da gravação
 $msg_gravou = "";
