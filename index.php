@@ -29,7 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $l_erro = 'Falha no Login. Nome ou senha inválido. Verifique os dados e tente novamente !!!';
     } else {
         // procuro senha
-        $c_sql = "SELECT usuarios.id,usuarios.senha, usuarios.tipo FROM usuarios where usuarios.login='$c_login'";
+        $c_sql = "SELECT usuarios.id,usuarios.senha, usuarios.tipo, usuarios.cadastro,
+         usuarios.consulta, usuarios.lancamentos FROM usuarios where usuarios.login='$c_login'";
         $result = $conection->query($c_sql);
         $registro = $result->fetch_assoc();
         $c_senha = base64_decode($registro['senha']);
@@ -41,6 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $_SESSION["id_usuario"] = $registro['id'];
             $_SESSION['c_usuario'] = $c_login;
             $_SESSION['tipo'] = $registro['tipo'];
+            $_SESSION['cadastro']=$registro['cadastro'];
+            $_SESSION['relatorio']=$registro['consulta'];
+            $_SESSION['solicitacao']=$registro['lancamentos'];;
             //$_SESSION['']
             header('location: /transporte/menu.php');
         }

@@ -3,6 +3,11 @@ session_start();
 if (!isset($_SESSION['newsession'])) {
     die('Acesso não autorizado!!!');
 }
+// verifico se usuário tem permissão de acesso
+if ($_SESSION['tipo'] <> 'Administrador')
+    header('location: /transporte/acesso.php');
+
+
 include("../../conexao.php");
 include("../../links.php");
 ?>
@@ -11,14 +16,6 @@ include("../../links.php");
 
 <body>
 
-    <script language="Javascript">
-        function confirmacao(id) {
-            var resposta = confirm("Deseja remover esse registro?");
-            if (resposta == true) {
-                window.location.href = "/gop/marcas_excluir.php?id=" + id;
-            }
-        }
-    </script>
 
     <script language="Javascript">
         function mensagem(msg) {

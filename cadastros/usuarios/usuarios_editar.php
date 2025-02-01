@@ -42,7 +42,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {  // metodo get para carregar dados no
         $c_statusativo = 'checked';
     } else {
         $c_statusativo = '';
+    }// 
+    if ($registro['consulta'] == 'S') {
+        $c_chkrelatorio = 'checked';
+    } else {
+        $c_chkrelatorio = 'N';
     }
+    if ($registro['lancamentos'] == 'S') {
+        $c_chklancamentos = 'checked';
+    } else {
+        $c_chklancamentos = 'N';
+    }
+    //
+    if ($registro['cadastro'] == 'S') {
+        $c_chkcadastros = 'checked';
+    } else {
+        $c_chkcadastros = 'N';
+    }
+
 } else {
     // metodo post para atualizar dados
     $c_id = $_POST["id"];
@@ -58,6 +75,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {  // metodo get para carregar dados no
     } else {
         $c_ativo = 'S';
     }
+        //
+        if (isset($_POST['chkcadastros'])) {
+            $c_chkcadastros = 'S';
+        } else {
+            $c_chkcadastros = 'N';
+        }
+        //
+        if (isset($_POST['chkrelatorios'])) {
+            $c_chkrelatorios = 'S';
+        } else {
+            $c_chkrelatorios = 'N';
+        }
+    
+        //
+        if (isset($_POST['chklancamentos'])) {
+            $c_chklancamentos = 'S';
+        } else {
+            $c_chklancamentos = 'N';
+        }
+    
     do {
         if (empty($c_nome) || empty($c_login) || empty($c_senha)) {
             $msg_erro = "Todos os Campos devem ser preenchidos!!";
@@ -91,6 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {  // metodo get para carregar dados no
         // faço a Leitura da tabela com sql
         $c_sql = "Update Usuarios" .
             " SET nome = '$c_nome', login ='$c_login', senha ='$c_senha', ativo='$c_ativo', tipo='$c_tipo'" .
+            ", cadastro='$c_chkcadastros', consulta='$c_chkrelatorios',lancamentos='$c_chklancamentos'".
             " where id=$c_id";
 
         $result = $conection->query($c_sql);
@@ -152,7 +190,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {  // metodo get para carregar dados no
                 <div class="form-check col-sm-3">
                     <label class="form-check-label col-form-label">Usuário Ativo</label>
                     <div class="col-sm-3">
-                        <input class="form-check-input" type="checkbox" value="S" name="chkativo" id="chkativo" checked>
+                        <input class="form-check-input" type="checkbox" value="S" name="chkativo" id="chkativo"  <?php echo $c_statusativo ?>>
                     </div>
                 </div>
             </div>
@@ -192,6 +230,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {  // metodo get para carregar dados no
                     </select>
                 </div>
             </div>
+            <p><h5>Controle de Acessos</h5></p>
+            <div class="row mb-3">
+                <div class="form-check col-sm-3">
+                    <label class="form-check-label col-form-label">Acessa Cadastros</label>
+                    <div class="col-sm-1">
+                        <input class="form-check-input" type="checkbox" value="S" name="chkcadastros" id="chkcadastros"  <?php echo $c_chkcadastros ?>>
+                    </div>
+                </div>
+                <div class="form-check col-sm-3">
+                    <label class="form-check-label col-form-label">Acessa Relatórios</label>
+                    <div class="col-sm-1">
+                        <input class="form-check-input" type="checkbox" value="S" name="chkrelatorios" id="chkrelatorios"  <?php echo $c_chkrelatorio ?>>
+                    </div>
+                </div>
+                <div class="form-check col-sm-3">
+                    <label class="form-check-label col-form-label">Acessa Solicitações</label>
+                    <div class="col-sm-1">
+                        <input class="form-check-input" type="checkbox" value="S" name="chklancamentos" id="chklancamentos"  <?php echo $c_chklancamentos ?>>
+                    </div>
+                </div>
+            </div>
+
+
+            <hr>
+
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Senha (*)</label>
                 <div class="col-sm-2">

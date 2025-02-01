@@ -24,20 +24,41 @@ $msg_erro = "";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $c_nome = $_POST['nome'];
     $c_login = $_POST['login'];
-   
+
     $c_senha = $_POST['senha'];
     $c_senha2 = $_POST['senha2'];
     $c_tipo = $_POST['tipo'];
-   
-    
+
+
     if (!isset($_POST['chkativo'])) {
         $c_ativo = 'N';
     } else {
         $c_ativo = 'S';
     }
 
+    //
+    if (isset($_POST['chkcadastros'])) {
+        $c_chkcadastros = 'S';
+    } else {
+        $c_chkcadastros = 'N';
+    }
+    //
+    if (isset($_POST['chkrelatorios'])) {
+        $c_chkrelatorios = 'S';
+    } else {
+        $c_chkrelatorios = 'N';
+    }
+
+    //
+    if (isset($_POST['chklancamentos'])) {
+        $c_chklancamentos = 'S';
+    } else {
+        $c_chklancamentos = 'N';
+    }
+    //
+
     do {
-        if (empty($c_nome) || empty($c_login) || empty($c_senha))  {
+        if (empty($c_nome) || empty($c_login) || empty($c_senha)) {
             $msg_erro = "Todos os Campos devem ser preenchidos!!";
             break;
         }
@@ -52,14 +73,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
         }
         // consiste se senha tem pelo menos 1 caracter numérico
-        if (filter_var($c_senha, FILTER_SANITIZE_NUMBER_INT) == ''){
+        if (filter_var($c_senha, FILTER_SANITIZE_NUMBER_INT) == '') {
             $msg_erro = "Campo Senha deve ter pelo menos (1) caracter numérico";
             break;
         }
-        if (ctype_digit($c_senha)){
+        if (ctype_digit($c_senha)) {
             $msg_erro = "Campo Senha deve conter pelo menos uma letra do Alfabeto";
             break;
-
         }
         // consistencia se já existe login cadastrado
         $c_sql = "select usuarios.login from usuarios where login='$c_login'";
@@ -69,22 +89,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $msg_erro = "Já existe este login cadastrado!!";
             break;
         }
-        
-
         $i_tamsenha = strlen($c_senha);
         if (($i_tamsenha < 8) || ($i_tamsenha > 32)) {
             $msg_erro = "Campo Senha deve ter no mínimo 8 caracteres e no máximo 32 caracteres";
             break;
         }
-              
-        
+
+
         // criptografo a senha digitada
         $c_senha = base64_encode($c_senha);
         // grava dados no banco
 
         // faço a Leitura da tabela com sql
-        $c_sql = "Insert into usuarios (nome,login,senha, ativo, tipo)" .
-            "Value ('$c_nome', '$c_login', '$c_senha', '$c_ativo','$c_tipo')";
+        $c_sql = "Insert into usuarios (nome,login,senha, ativo, tipo, cadastro, consulta,lancamentos)" .
+            "Value ('$c_nome', '$c_login', '$c_senha', '$c_ativo','$c_tipo',
+            '$c_chkcadastros', '$c_chkrelatorios', '$c_chklancamentos')";
 
         $result = $conection->query($c_sql);
         // verifico se a query foi correto
@@ -108,9 +127,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-   
-
 </head>
 
 <div class="container -my5">
@@ -119,8 +135,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div style="padding-top:5px;">
             <div class="panel panel-primary class">
                 <div class="panel-heading text-center">
-                <h4>Controle de Transporte da Secretaria Municipal de Saúde</h4>
-                <h5>Cadastro de Usuário<h5>
+                    <h4>Controle de Transporte da Secretaria Municipal de Saúde</h4>
+                    <h5>Cadastro de Usuário<h5>
                 </div>
             </div>
         </div>
@@ -129,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <img Align="left" src="\gop\images\escrita.png" alt="30" height="35">
 
             </div>
-            <h5>Campos com (*) são obrigatórios. A senha do usário deve conter pelo menos 1 letra do alfabeto, 1 caracter numérico, no  mínimo 8 caracteres e no máximo 30 caracteres</h5>
+            <h5>Campos com (*) são obrigatórios. A senha do usário deve conter pelo menos 1 letra do alfabeto, 1 caracter numérico, no mínimo 8 caracteres e no máximo 30 caracteres</h5>
         </div>
 
         <br>
@@ -179,8 +195,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </select>
                 </div>
             </div>
-         
-            
+            <hr>
+            <p>
+            <h5>Controle de Acessos</h5>
+            </p>
+            <div class="row mb-3">
+                <div class="form-check col-sm-3">
+                    <label class="form-check-label col-form-label">Acessa Cadastros</label>
+                    <div class="col-sm-1">
+                        <input class="form-check-input" type="checkbox" value="S" name="chkcadastros" id="chkcadastros" checked>
+                    </div>
+                </div>
+                <div class="form-check col-sm-3">
+                    <label class="form-check-label col-form-label">Acessa Relatórios</label>
+                    <div class="col-sm-1">
+                        <input class="form-check-input" type="checkbox" value="S" name="chkrelatorios" id="chkrelatorios" checked>
+                    </div>
+                </div>
+                <div class="form-check col-sm-3">
+                    <label class="form-check-label col-form-label">Acessa Solicitações</label>
+                    <div class="col-sm-1">
+                        <input class="form-check-input" type="checkbox" value="S" name="chklancamentos" id="chklancamentos" checked>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Senha (*)</label>
                 <div class="col-sm-2">
