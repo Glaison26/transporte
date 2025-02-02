@@ -99,7 +99,7 @@
                                      <a class='nav-link dropdown-toggle' href='#' id='dropdown01' data-toggle='dropdown' aria-haspopup=true' aria-expanded='false'><img src='\transporte\imagens\resultado.png' alt='25' width='25' height='25'> Resultados</a>
                                      <div class='dropdown-menu' aria-labelledby='dropdown01'>
                                          <a class='dropdown-item' href='/transporte/relatorios/relatorio_pesquisa.php'> Resultados Gerais</a>
-                                         <a class='dropdown-item' href='/gop/cadastros/recursos/recursos_lista.php'>Comparativo Mensal</a>
+                                         <a class='dropdown-item' href='#'>Comparativo Mensal</a>
                                      
 
                                      </div>

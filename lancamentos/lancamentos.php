@@ -3,7 +3,8 @@ session_start();
 if (!isset($_SESSION['newsession'])) {
     die('Acesso não autorizado!!!');
 }
-
+if ($_SESSION['solicitacao'] == 'N' && $_SESSION['tipo'] <> 'Administrador')
+    header('location: /transporte/acesso.php');
 //echo $c_sql_recurso;
 include('../links2.php');
 include('../conexao.php');

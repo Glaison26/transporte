@@ -4,6 +4,10 @@ if (!isset($_SESSION['newsession'])) {
     die('Acesso não autorizado!!!');
 }
 
+// verifico se usuário tem permissão de acesso
+if ($_SESSION['cadastro'] == 'N' && $_SESSION['tipo'] <> 'Administrador')
+    header('location: /transporte/acesso.php');
+
 //echo $c_sql_recurso;
 include('../../links.php');
 include('../../conexao.php');

@@ -3,6 +3,9 @@ session_start();
 if (!isset($_SESSION['newsession'])) {
     die('Acesso não autorizado!!!');
 }
+
+if ($_SESSION['relatorio'] == 'N' && $_SESSION['tipo'] <> 'Administrador')
+    header('location: /transporte/acesso.php');
 include("../conexao.php");
 include("../links2.php");
 

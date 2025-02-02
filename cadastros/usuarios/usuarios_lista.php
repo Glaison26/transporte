@@ -16,13 +16,11 @@ include("../../links.php");
 
 <body>
 
-
     <script language="Javascript">
         function mensagem(msg) {
             alert(msg);
         }
     </script>
-
 
     <script>
         $(document).ready(function() {
