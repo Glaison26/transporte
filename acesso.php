@@ -32,9 +32,9 @@ include_once "lib_gop.php";
     <div class="container -my5">
         <div class='alert alert-warning' role='alert'>
         <div style="padding-left:15px;">
-                <img Align="left" src="\transporte\imagens\aviso.png" alt="50" height="50" width='80'>
+                <img Align="left" src="\transporte\imagens\aviso.png" alt="50" height="30" width='80'>
             </div>
-            <h3>Acesso Negado !!!</h3>
+            <h4>Acesso Negado !!!</h4>
         
         </div>
         <br>
