@@ -8,6 +8,7 @@ if ($_SESSION['solicitacao'] == 'N' && $_SESSION['tipo'] <> 'Administrador')
 //echo $c_sql_recurso;
 include('../links2.php');
 include('../conexao.php');
+date_default_timezone_set('America/Sao_Paulo');
 // rotina para montagem do sql com as opções selecionadas
 if (isset($_POST["btnpesquisa"])) {
     $d_data1 = $_POST['data1'];
