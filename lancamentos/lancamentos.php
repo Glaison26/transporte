@@ -38,7 +38,7 @@ if (isset($_POST["btnpesquisa"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Prefeitura Municipal de Sabará</title>
 </head>
 
 <body>
