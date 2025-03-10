@@ -12,6 +12,7 @@ include_once "../lib_gop.php";
 // variaveis para mensagens de erro e suscessso da gravação
 $msg_gravou = "";
 $msg_erro = "";
+$c_id = $_GET["id"];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -47,9 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     do {
 
-        // faço a inclusão da tabela com sql
+        // faço a alteracao da tabela com sql
         $c_sql = "update lancamentos set tipo='$c_tipo', id_motorista='$i_motorista', id_solicitante='$i_solicitante',
-        id_paciente='$i_paciente', id_veiculo='$i_veiculo', data='$c_data', hora='$c_hora', justificativa='$c_justificativa', destino='$c_destino'";
+        id_paciente='$i_paciente', id_veiculo='$i_veiculo', data='$c_data', hora='$c_hora', justificativa='$c_justificativa', destino='$c_destino' where id='$c_id'";
      
         $result = $conection->query($c_sql);
         // verifico se a query foi correto

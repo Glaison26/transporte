@@ -6,6 +6,7 @@ if (!isset($_SESSION['newsession'])) {
 }
 include("../conexao.php");
 include("../links2.php");
+date_default_timezone_set('America/Sao_Paulo');
 // por motoristas
 $c_sql_motoristas = $_SESSION['sql_motoristas'];
 $c_sql_veiculos = $_SESSION['sql_veiculos'];

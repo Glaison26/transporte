@@ -23,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {  // metodo get para carregar dados no
         header('location: /transporte/cadastros/solicitantes/solicitantes_lista.php');
         exit;
     }
-
    
     // leitura do cliente através de sql usando id passada
     $c_sql = "select * from solicitantes where id=$c_id";

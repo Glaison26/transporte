@@ -17,20 +17,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         die("Erro ao Executar Sql !!" . $conection->connect_error);
     }
     $c_linha = $result->fetch_assoc();
-    if ($c_login == 'Glaison') {
-        $_SESSION["newsession"] = "gop";
-        $_SESSION["id_usuario"] = 16;
+    //if ($c_login == 'Glaison') {
+    //    $_SESSION["newsession"] = "gop";
+    //    $_SESSION["id_usuario"] = 16;
         
-        $_SESSION['c_usuario'] = $c_login;
-        $_SESSION['tipo'] = 'Administrador';
-        header('location: /transporte/menu.php');
-    }
+    //    $_SESSION['c_usuario'] = $c_login;
+    //    $_SESSION['tipo'] = 'Administrador';
+    //    header('location: /transporte/menu.php');
+    //}
     if ($c_linha['achou'] == 0) {
         $l_erro = 'Falha no Login. Nome ou senha inválido. Verifique os dados e tente novamente !!!';
     } else {
         // procuro senha
-        $c_sql = "SELECT usuarios.id,usuarios.senha, usuarios.tipo, usuarios.cadastro,
-         usuarios.consulta, usuarios.lancamentos FROM usuarios where usuarios.login='$c_login'";
+        $c_sql = "SELECT usuarios.id,usuarios.senha, usuarios.tipo FROM usuarios where usuarios.login='$c_login'";
         $result = $conection->query($c_sql);
         $registro = $result->fetch_assoc();
         $c_senha = base64_decode($registro['senha']);
@@ -44,8 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $_SESSION['tipo'] = $registro['tipo'];
             $_SESSION['cadastro']=$registro['cadastro'];
             $_SESSION['relatorio']=$registro['consulta'];
-            $_SESSION['solicitacao']=$registro['lancamentos'];;
-            //$_SESSION['']
+            $_SESSION['solicitacao']=$registro['lancamentos'];
             header('location: /transporte/menu.php');
         }
     }
@@ -56,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 <html lang="en">
 
 <head>
-    <title>gop - Gestão de Serviços</title>
+    <title>Prefeitura Municipal de Sabará</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
