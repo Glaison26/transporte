@@ -37,7 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $i_paciente = $registro['id'];
     $c_destino = $_POST['destino'];
     $c_justificativa = $_POST['justificativa'];
+    // captruro somente a descrição do veiculo, pois no combo box está mostrando descrição e placa
     $c_veiculo = $_POST['veiculo'];
+    $c_veiculo = substr($c_veiculo, 0, strpos($c_veiculo, " -"));
     // localizo id do paciente via sql
     $c_sql = "select id from veiculo where descricao='$c_veiculo'";
     $result = $conection->query($c_sql);
@@ -136,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <div class="row mb-6">
                 <label class="col-sm-2 col-form-label">Solicitante </label>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <select class="form-select form-select-lg mb-3" id="solicitante" name="solicitante" required>
                         <option></option>
                         <?php
@@ -152,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </select>
                 </div>
                 <label class="col-sm-2 col-form-label">Motorista </label>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <select class="form-select form-select-lg mb-3" id="motorista" name="motorista" required>
                         <option></option>
                         <?php
@@ -171,23 +173,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <div class="row mb-6">
                 <label class="col-sm-2 col-form-label">Veículo </label>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <select class="form-select form-select-lg mb-3" id="veiculo" name="veiculo" required>
                         <option></option>
                         <?php
                         // select da tabela de veiculos
-                        $c_sql = "SELECT veiculo.id, veiculo.descricao FROM veiculo ORDER BY veiculo.descricao";
+                        $c_sql = "SELECT veiculo.id, veiculo.descricao, veiculo.placa FROM veiculo ORDER BY veiculo.descricao";
                         $result = $conection->query($c_sql);
                         while ($c_linha = $result->fetch_assoc()) {
+                           // combo box para pegar a id do veiculo e mostar descricao e placa do veiculo
                             echo "  
-                          <option>$c_linha[descricao]</option>
+                        <option>$c_linha[descricao] - $c_linha[placa]</option>
                         ";
+                           
+                           
                         }
                         ?>
                     </select>
                 </div>
                 <label class="col-sm-2 col-form-label">Paciente </label>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <select class="form-select form-select-lg mb-3" id="paciente" name="paciente" required>
                         <option></option>
                         <?php
@@ -207,7 +212,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="row mb-3">
 
                 <label class="col-sm-2 col-form-label">Justificativa</label>
-                <div class="col-sm-8">
+                <div class="col-sm-10">
                     <textarea class="form-control" id="justificativa" name="justificativa" rows="6"></textarea>
                 </div>
 

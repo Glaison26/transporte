@@ -97,7 +97,7 @@ include('../conexao.php');
                     <th scope="col">Solicitante</th>
                     <th scope="col">Destino</th>
                     <th scope="col">Motorista</th>
-                    <th scope="col">Veículo</th>
+                    <th scope="col">Veículo - Placa</th>
                     <th scope="col">Paciente</th>
                     <th scope="col">Opções</th>
                 </tr>
@@ -125,7 +125,7 @@ include('../conexao.php');
             <td>$c_linha[solicitante]</td>
             <td>$c_linha[destino]</td>
             <td>$c_linha[motorista]</td>
-            <td>$c_linha[veiculo]</td>
+            <td>$c_linha[veiculo] - $c_linha[placa]</td>
             <td>$c_linha[paciente]</td>
             <td>
             <a class='btn btn-secondary btn-sm' href='/transporte/lancamentos/lancamentos_editar.php?id=$c_linha[id]'><span class='glyphicon glyphicon-pencil'></span> Editar</a>
