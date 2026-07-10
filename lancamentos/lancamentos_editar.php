@@ -161,7 +161,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <br>
             </div>
             <br>
-
             <div class="row mb-6">
                 <label class="col-sm-2 col-form-label">Solicitante </label>
                 <div class="col-sm-4">
