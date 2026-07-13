@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="panel panel-primary class">
         <div class="panel-heading text-center">
             <h4>Controle de Transporte da Secretaria Municipal de Saúde</h4>
-            <h5>Lançamento Solicitação<h5>
+            <h5>Lançamento de Solicitação<h5>
         </div>
     </div>
 
@@ -112,6 +112,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <option>Unidade de Saúde</option>
                         <option>Oncologia</option>
                         <option>Visita domiciliar</option>
+                        <option>TSE - Transporte Sanitário Eletivo</option>
+                        <option>TFD - Transporte Fora de Domicílio</option>
                     </select>
                 </div>
             </div>
