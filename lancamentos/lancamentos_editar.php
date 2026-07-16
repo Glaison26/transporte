@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // faço a alteracao da tabela com sql
         $c_sql = "update lancamentos set tipo='$c_tipo', id_motorista='$i_motorista', id_solicitante='$i_solicitante',
         id_paciente='$i_paciente', id_veiculo='$i_veiculo', data='$c_data', hora='$c_hora', justificativa='$c_justificativa', destino='$c_destino' where id='$c_id'";
-     
+
         $result = $conection->query($c_sql);
         // verifico se a query foi correto
         if (!$result) {
@@ -164,7 +164,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <br>
             </div>
             <br>
-
             <div class="row mb-6">
                 <label class="col-sm-2 col-form-label">Solicitante </label>
                 <div class="col-sm-4">
@@ -269,15 +268,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
     </div>
 
-
-
-
-
-
     </form>
-
-
-
 
 </body>
 

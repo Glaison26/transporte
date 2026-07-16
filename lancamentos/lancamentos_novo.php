@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="panel panel-primary class">
         <div class="panel-heading text-center">
             <h4>Controle de Transporte da Secretaria Municipal de Saúde</h4>
-            <h5>Lançamento Solicitação<h5>
+            <h5>Lançamento de Solicitação<h5>
         </div>
     </div>
 
