@@ -18,7 +18,7 @@ if (isset($_POST["btnpesquisa"])) {
     $c_where = "(data>='$d_data1' and data<='$d_data2')";
     //
     $_SESSION['sql'] = "SELECT lancamentos.id, lancamentos.`data`, lancamentos.hora, lancamentos.destino, motoristas.nome AS motorista, solicitantes.nome AS solicitante,
-                        veiculo.descricao AS veiculo, paciente.nome as paciente
+                        veiculo.descricao AS veiculo, veiculo.placa AS placa, paciente.nome as paciente
                         FROM lancamentos
                         JOIN motoristas ON lancamentos.id_motorista = motoristas.id
                         JOIN veiculo ON lancamentos.id_veiculo = veiculo.id
